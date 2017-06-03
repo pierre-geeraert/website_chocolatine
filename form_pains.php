@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style_aux.css" />
         <title>Exia miam</title>
 	<link rel="shortcut icon" type="image/x-icon" href="pizza.ico" />
-
+	<meta name="viewport" content="width=device-width"/>
 </head>
 
 
@@ -26,19 +26,19 @@
       		<legend>Gestion prix </legend> <!-- Titre du fieldset --> 
 
 
-       			<label for="prix">Prix</label>
-       			<input type="text" name="prix" id="prix" />
-
+       			<label for="prix">Prix    </label>
+      			<input type="tel" name="prix" id="prix" />
+			<br />	
 
     			<label for="comment">Comment ?</label>
        			<input type="text" name="comment" id="comment" />
-	
+			<br />
 	
 			<label for="password">Password ?</label>
-			<input type="password" name="password" id="password" />
-
+			<input type="password" name="password" id="password">
+			<br />
         		<input type="submit" value="Valider" />
-
+			<input type="reset" value="reset" />
 
 
 	</fieldset>
@@ -47,7 +47,9 @@
 
 </center>
 
+	<fieldset>
 
+                <legend>Historique des prix </legend> <!-- Titre du fieldset -->
 	<?php
 		//connect to database
 		$conn_users = pg_connect("host=postgresql-pi-ux-ce.alwaysdata.net dbname=pi-ux-ce_bdd user=pi-ux-ce password=Palyp557");
@@ -80,21 +82,27 @@
 				$query1 = "insert into pains(horodateur,argent,comment) values (now(),$prix,'{$comment}');";
 
 				pg_query($conn_pains,$query1);
-				echo "insert DONE";
-
+				//faire qqchose si ca marche
+				//<audio src="musique.mp3"> </audio>
+				?>
+				<script language="javascript">
+					alert("Felicitation c'est bon");
+				</script>
+			<?php			
 			}
 		}
 
 
 		$result = pg_query($conn_pains, "SELECT * FROM pains order by horodateur");
 		while ($row = pg_fetch_row($result)) {
- 			echo "Time: $row[0]  Argent: $row[1] Comment: $row[2]";
+ 			echo "Time: $row[0]     Argent: $row[1] Commentaire: $row[2]";
 			echo "<br />\n";
 			echo "<br />\n";
 		}
 
 
 	?>
+	</fieldset>
 	</p>
 
 </form>

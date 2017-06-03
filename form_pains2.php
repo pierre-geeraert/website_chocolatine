@@ -110,15 +110,16 @@
 
        <label for="user">prix</label>
        <input type="text" name="prix" id="prix" />
+	<br />	
 
 	<label for="comment">Comment ?</label>
         <input type="text" name="comment" id="comment" />
-
+	<br />
 
 
        <label for="password">Password ?</label>
        <input type="password" name="password" id="password" />
-
+	<br />
         <input type="submit" value="Valider" />
 
 
@@ -140,6 +141,9 @@
 			<div class="container">
 				<div class="row p-b">
 					<div class="col-md-6 col-md-offset-3 text-center">
+<fieldset>
+
+                <legend>Historique des prix </legend> <!-- Titre du fieldset -->
 <?php
 
 
@@ -189,6 +193,7 @@
 
 
 ?>
+</fieldset>
 				</div>
 				</div>
 			</div>
