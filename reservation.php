@@ -23,20 +23,47 @@
 
 	<fieldset>
 
-      		<legend>Gestion prix </legend> <!-- Titre du fieldset --> 
+      		<legend>Reservation </legend> <!-- Titre du fieldset --> 
 
 
-       			<label for="prix">Prix    </label>
-      			<input type="tel" name="prix" id="prix" />
-			<br />	
+       			<label for="prenom">Prenom    </label>
+      			<div style="text-align:center;"><input type="text" name="prix" id="prix" /></div>
+		
 
-    			<label for="comment">Comment ?</label>
-       			<input type="text" name="comment" id="comment" />
-			<br />
-	
-			<label for="password">Password ?</label>
-			<input type="password" name="password" id="password">
-			<br />
+    			<label for="nom">Nom</label>
+       			<div style="text-align:center;"><input type="text" name="comment" id="comment	" /></div>
+			
+
+			<label for="numero">Numero</label>
+			<div style="text-align:center;"><input type="tel" name="numero" id="numero"></div>
+			
+
+			<label for="mail">Mail</label>
+                        <div style="text-align:center;"><input type="email" name="mail" id="mail" /></div>
+                        
+
+			<label for="date">Date</label>
+                        <div style="text-align:center;"><input type="date" name="date" id="date" /></div>
+                  
+
+			<label for="salle">Salle</label>
+                        <div style="text-align:center;"><input type="text" name="salle" id="salle" /></div>
+                   
+
+			<label for="derangeable">Peut t-on deranger votre intervenant ?</label><br />
+			<input type="radio" name="age" value="oui" id="oui" /> <label for="oui">oui</label>
+      			<input type="radio" name="age" value="non" id="non" /> <label for="non">non</label><br />
+                   
+
+			<label for="nbr pains">nbr petit pains</label>
+                        <div style="text-align:center;"><input type="number" min="0" name="nbr_petit_pains" id="nbr_petit_pains" /></div>
+
+
+			<label for="nbr croissants">nbr croissants</label>
+                        <div style="text-align:center;"><input type="number" min="0" name="nbr_croissants" id="nbr_croissants" /></div> 
+                   
+
+			
         		<input type="submit" value="Valider" />
 			<input type="reset" value="reset" />
 
@@ -49,13 +76,12 @@
 
 	<fieldset>
 
-                <legend>Historique des prix </legend> <!-- Titre du fieldset -->
+                <legend>a retirer car confidentiel </legend> <!-- Titre du fieldset -->
 	<?php
 		//connect to database
-		$conn_users = pg_connect("host=postgresql-pi-ux-ce.alwaysdata.net dbname=pi-ux-ce_pains user=pi-ux-ce_mini_root password=Exiamiam");
 		$conn_pains = pg_connect("host=postgresql-pi-ux-ce.alwaysdata.net dbname=pi-ux-ce_pains user=pi-ux-ce_mini_root password=Exiamiam");
 
-		if (!$conn_users) {
+		if (!$conn_pains) {
   			echo "Une erreur s'est produite.\n";
   			exit;
 		}
@@ -63,10 +89,11 @@
 
 
 		$user = $_POST['user'];
+		$age = $_POST['age'];
 		$password = $_POST['password'];
 
 		//test if the password is good
-		$result = pg_query($conn_users, "select count(*) from users where username='pi-ux-ce_pains' and password='$password';");
+		$result = pg_query($conn_pains, "select count(*) from users where username='pi-ux-ce_pains' and password='$password';");
 		$rows = pg_num_rows($result);
 		$prix = $_POST['prix'];
 		$comment=$_POST['comment'];
@@ -115,7 +142,7 @@
 			echo "<br />\n";
 			echo "<br />\n";
 		}
-
+		echo $age;
 
 	?>
 	</fieldset>
