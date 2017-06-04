@@ -6,7 +6,7 @@ CREATE TABLE client (
 	mail varchar(50),
 	date date default now(),
 	classe varchar(25),
-	derangeable boolean default false,
+	derangeable varchar(5) default false,
 	quantité_pains integer default null,
 	quantité_croissant integer default null
 	);
