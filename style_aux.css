@@ -9,4 +9,15 @@ body
 
 form { 
 text-align: center;
+
+
+}
+input:focus, textarea:focus {
+    /* Afin de rehausser les éléments actifs */
+    border-color: #000;
+}
+
+.introduction{
+text-align: right;
+
 }
