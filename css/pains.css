@@ -1,0 +1,17 @@
+#logo{
+    height: 60px;
+    width: auto;
+}
+.input-group .input-group-addon{
+    min-width: 47px;
+}
+.input-group{
+    margin: 5px;
+}
+.btn{
+    height: 45px;
+    width: 50%;
+}
+.btn-group {
+    padding: 0px 5px 0px 5px;
+}
